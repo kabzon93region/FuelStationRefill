@@ -1,0 +1,100 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>FuelStationRefill</AssemblyName>
+    <RootNamespace>FuelStationRefill</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Version>1.2.3</Version>
+    <AssemblyVersion>1.2.3.0</AssemblyVersion>
+    <FileVersion>1.2.3.0</FileVersion>
+    <Product>Fuel Station Refill</Product>
+    <Description>Refuel fuel canisters at designated fuel station zones</Description>
+    <Charset>utf-8</Charset>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TarkovDir Condition="'$(TarkovDir)' == '' AND '$(EFT_GAME_ROOT)' != ''">$(EFT_GAME_ROOT)\</TarkovDir>
+    <TarkovDir Condition="'$(TarkovDir)' == ''">U:\Games\EscapeFromTarkov4\</TarkovDir>
+    <CursorModdingDir>$(TarkovDir)CURSORAIMODING\</CursorModdingDir>
+    <TarkovManagedDir>$(TarkovDir)EscapeFromTarkov_Data\Managed\</TarkovManagedDir>
+    <TarkovBepInExCoreDir>$(TarkovDir)BepInEx\core\</TarkovBepInExCoreDir>
+    <GameRefsDir>$(CursorModdingDir)game-assembly-base\05-reference-dlls\</GameRefsDir>
+    <TarkovFikaCoreDir>$(TarkovDir)BepInEx\plugins\Fika\</TarkovFikaCoreDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(TarkovBepInExCoreDir)0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>$(TarkovBepInExCoreDir)BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(GameRefsDir)Assembly-CSharp-remapped.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Comfort">
+      <HintPath>$(TarkovManagedDir)Comfort.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(TarkovManagedDir)UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(TarkovManagedDir)UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(TarkovManagedDir)UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(TarkovManagedDir)UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(TarkovManagedDir)UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>$(TarkovManagedDir)UnityEngine.JSONSerializeModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>$(TarkovManagedDir)UnityEngine.AudioModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(TarkovManagedDir)Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Fika.Core">
+      <HintPath>$(TarkovFikaCoreDir)Fika.Core.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>$(TarkovManagedDir)Sirenix.Serialization.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="src\PluginInfo.cs" />
+    <Compile Include="src\PluginCore.cs" />
+    <Compile Include="src\FuelZoneData.cs" />
+    <Compile Include="src\FuelStationPackets.cs" />
+    <Compile Include="src\FuelStationFikaSync.cs" />
+    <Compile Include="src\ConfigurationManagerAttributes.cs" />
+  </ItemGroup>
+
+</Project>
