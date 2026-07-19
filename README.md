@@ -107,3 +107,7 @@
 
 Разовый донат картой РФ, СБП, ЮMoney, VK Pay:
 **[DonationAlerts → kabzon93region](https://www.donationalerts.com/r/kabzon93region)**
+
+---
+
+*Мод разработан при поддержке [Cursor AI](https://cursor.sh/) и Xiomi MiMo.*
