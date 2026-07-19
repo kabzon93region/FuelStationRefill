@@ -1,5 +1,11 @@
 # Changelog — Fuel Station Refill
 
+## 1.2.4 (2026-07-19)
+
+- Zone deactivates when station has less than 1 full unit of fuel remaining
+- Interaction prompt [F] no longer appears for nearly-empty stations
+- Station fuel set to 0 when remaining < 1 unit (prevents ghost zones)
+
 ## 1.2.3 (2026-07-19)
 
 - Increased tolerance from 0.01f to 0.5f — canisters within 0.5 units of max are considered full

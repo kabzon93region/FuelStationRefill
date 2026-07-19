@@ -371,6 +371,7 @@ namespace FuelStationRefill
             foreach (var zone in _fuelZones)
             {
                 if (!zone.IsActiveInCurrentMap() || !zone.IsActive) continue;
+                if (zone.CurrentFuel < 1f) continue; // not enough for a whole unit
 
                 Vector3 zonePos = zone.GetPosition();
                 float dist = Vector3.Distance(playerPos, zonePos);
@@ -398,7 +399,7 @@ namespace FuelStationRefill
 
             // Handle interaction key press (F) — start native Plant interaction
             if (_isInZone && !_isRefueling && _currentZone != null
-                && _currentZone.IsActive && _currentZone.CurrentFuel > 0
+                && _currentZone.IsActive && _currentZone.CurrentFuel >= 1f
                 && Input.GetKeyDown(KeyCode.F))
             {
                 TryStartNativeRefuel(player);
@@ -611,8 +612,8 @@ namespace FuelStationRefill
                 currentVal += canGive;
                 _refuelGivenSoFar += canGive;
 
-                // Station exhausted
-                if (_currentZone.CurrentFuel <= 0f)
+                // Station exhausted (less than 1 full unit remaining)
+                if (_currentZone.CurrentFuel < 1f)
                 {
                     _currentZone.CurrentFuel = 0f;
                     _currentZone.IsActive = false;
